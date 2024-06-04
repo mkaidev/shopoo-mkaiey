@@ -1,23 +1,23 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Signup from "../components/Signup/Signup";
+import ShopCreate from "../components/Shop/ShopCreate";
 
-const SignupPage = () => {
+const ShopCreatePage = () => {
   const navigate = useNavigate();
-  const { isAuthenticated } = useSelector((state) => state.user);
+  const { isSeller, seller } = useSelector((state) => state.seller);
 
   useEffect(() => {
-    if (isAuthenticated === true) {
-      navigate("/");
+    if (isSeller === true) {
+      navigate(`/shop/${seller._id}`);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div>
-      <Signup />
+      <ShopCreate />
     </div>
   );
 };
 
-export default SignupPage;
+export default ShopCreatePage;
