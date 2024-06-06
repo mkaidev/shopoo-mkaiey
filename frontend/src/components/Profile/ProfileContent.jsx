@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable jsx-a11y/role-supports-aria-props */
 import React, { useState } from "react";
 import {
   AiOutlineArrowRight,
@@ -42,6 +44,7 @@ const ProfileContent = ({ active }) => {
       toast.success(successMessage);
       dispatch({ type: "clearMessages" });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [error, successMessage]);
 
   const handleSubmit = (e) => {
@@ -207,6 +210,7 @@ const AllOrders = () => {
 
   useEffect(() => {
     dispatch(getAllOrdersOfUser(user._id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const columns = [
@@ -292,6 +296,7 @@ const AllRefundOrders = () => {
 
   useEffect(() => {
     dispatch(getAllOrdersOfUser(user._id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const eligibleOrders =
@@ -380,6 +385,7 @@ const TrackOrder = () => {
 
   useEffect(() => {
     dispatch(getAllOrdersOfUser(user._id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const columns = [

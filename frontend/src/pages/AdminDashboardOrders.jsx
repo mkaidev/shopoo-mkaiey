@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import AdminHeader from "../components/Layout/AdminHeader";
 import AdminSideBar from "../components/Admin/Layout/AdminSideBar";
@@ -9,14 +8,11 @@ import { getAllOrdersOfAdmin } from "../redux/actions/order";
 const AdminDashboardOrders = () => {
   const dispatch = useDispatch();
 
-  const { adminOrders, adminOrderLoading } = useSelector(
-    (state) => state.order
-  );
+  const { adminOrders } = useSelector((state) => state.order);
 
   useEffect(() => {
     dispatch(getAllOrdersOfAdmin());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },

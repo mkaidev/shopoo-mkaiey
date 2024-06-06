@@ -1,11 +1,10 @@
 /* eslint-disable jsx-a11y/role-supports-aria-props */
-/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable no-unused-vars */
 import axios from "axios";
 import React, { useRef, useState } from "react";
 import { useEffect } from "react";
 import { server } from "../../server";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight, AiOutlineSend } from "react-icons/ai";
 import styles from "../../styles/styles";
@@ -366,6 +365,7 @@ const SellerInbox = ({
           messages.map((item, index) => {
             return (
               <div
+                key={index}
                 className={`flex w-full my-2 ${
                   item.sender === sellerId ? "justify-end" : "justify-start"
                 }`}
@@ -382,6 +382,7 @@ const SellerInbox = ({
                   <img
                     src={`${item.images?.url}`}
                     className="w-[300px] h-[300px] object-cover rounded-[10px] mr-2"
+                    alt=""
                   />
                 )}
                 {item.text !== "" && (

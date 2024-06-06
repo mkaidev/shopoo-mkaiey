@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/aria-props */
+/* eslint-disable jsx-a11y/role-supports-aria-props */
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { server } from "../../server";
@@ -98,7 +98,7 @@ const ShopSettings = () => {
 
         {/* shop info */}
         <form
-          aria-aria-required={true}
+          aria-required={true}
           className="flex flex-col items-center"
           onSubmit={updateHandler}
         >

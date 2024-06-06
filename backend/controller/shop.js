@@ -1,5 +1,4 @@
 const express = require("express");
-const path = require("path");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const sendMail = require("../utils/sendMail");
@@ -18,7 +17,7 @@ router.post(
       const { email } = req.body;
       const sellerEmail = await Shop.findOne({ email });
       if (sellerEmail) {
-        return next(new ErrorHandler("User already exists", 400));
+        return next(new ErrorHandler("Seller already exists", 400));
       }
 
       const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
@@ -68,7 +67,7 @@ const createActivationToken = (seller) => {
   });
 };
 
-// activate user
+// activate seller
 router.post(
   "/activation",
   catchAsyncErrors(async (req, res, next) => {
@@ -89,7 +88,7 @@ router.post(
       let seller = await Shop.findOne({ email });
 
       if (seller) {
-        return next(new ErrorHandler("User already exists", 400));
+        return next(new ErrorHandler("Seller already exists", 400));
       }
 
       seller = await Shop.create({
@@ -120,13 +119,13 @@ router.post(
         return next(new ErrorHandler("Please provide the all fields!", 400));
       }
 
-      const user = await Shop.findOne({ email }).select("+password");
+      const seller = await Shop.findOne({ email }).select("+password");
 
-      if (!user) {
-        return next(new ErrorHandler("User doesn't exists!", 400));
+      if (!seller) {
+        return next(new ErrorHandler("Seller doesn't exists!", 400));
       }
 
-      const isPasswordValid = await user.comparePassword(password);
+      const isPasswordValid = await seller.comparePassword(password);
 
       if (!isPasswordValid) {
         return next(
@@ -134,7 +133,7 @@ router.post(
         );
       }
 
-      sendShopToken(user, 201, res);
+      sendShopToken(seller, 201, res);
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
     }
@@ -150,7 +149,7 @@ router.get(
       const seller = await Shop.findById(req.seller._id);
 
       if (!seller) {
-        return next(new ErrorHandler("User doesn't exists", 400));
+        return next(new ErrorHandler("Seller doesn't exists", 400));
       }
 
       res.status(200).json({
@@ -245,7 +244,7 @@ router.put(
       const shop = await Shop.findOne(req.seller._id);
 
       if (!shop) {
-        return next(new ErrorHandler("User not found", 400));
+        return next(new ErrorHandler("Seller not found", 400));
       }
 
       shop.name = name;
@@ -335,7 +334,7 @@ router.put(
   })
 );
 
-// delete seller withdraw merthods --- only seller
+// delete seller withdraw methods --- only seller
 router.delete(
   "/delete-withdraw-method/",
   isSeller,

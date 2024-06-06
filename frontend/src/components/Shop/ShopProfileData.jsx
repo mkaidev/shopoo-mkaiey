@@ -10,12 +10,13 @@ import { getAllEventsShop } from "../../redux/actions/event";
 const ShopProfileData = ({ isOwner }) => {
   const { products } = useSelector((state) => state.products);
   const { events } = useSelector((state) => state.events);
+  const { seller } = useSelector((state) => state.seller);
   const { id } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllProductsShop(id));
-    dispatch(getAllEventsShop(id));
+    dispatch(getAllEventsShop(seller._id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
@@ -105,7 +106,7 @@ const ShopProfileData = ({ isOwner }) => {
         <div className="w-full">
           {allReviews &&
             allReviews.map((item, index) => (
-              <div className="w-full flex my-4">
+              <div key={index} className="w-full flex my-4">
                 <img
                   src={`${item.user.avatar?.url}`}
                   className="w-[50px] h-[50px] rounded-full"

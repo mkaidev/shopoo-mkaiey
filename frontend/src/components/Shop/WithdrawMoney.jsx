@@ -18,8 +18,8 @@ const WithdrawMoney = () => {
   const [bankInfo, setBankInfo] = useState({
     bankName: "",
     bankCountry: "",
-    bankSwiftCode: null,
-    bankAccountNumber: null,
+    bankSwiftCode: "",
+    bankAccountNumber: "",
     bankHolderName: "",
     bankAddress: "",
   });
@@ -141,13 +141,13 @@ const WithdrawMoney = () => {
                     </label>
                     <input
                       type="text"
-                      name=""
+                      name="bankName"
                       required
                       value={bankInfo.bankName}
                       onChange={(e) =>
                         setBankInfo({ ...bankInfo, bankName: e.target.value })
                       }
-                      id=""
+                      id="bankName"
                       placeholder="Enter your Bank name!"
                       className={`${styles.input} mt-2`}
                     />
@@ -158,7 +158,7 @@ const WithdrawMoney = () => {
                     </label>
                     <input
                       type="text"
-                      name=""
+                      name="bankCountry"
                       value={bankInfo.bankCountry}
                       onChange={(e) =>
                         setBankInfo({
@@ -166,7 +166,7 @@ const WithdrawMoney = () => {
                           bankCountry: e.target.value,
                         })
                       }
-                      id=""
+                      id="bankCountry"
                       required
                       placeholder="Enter your bank Country!"
                       className={`${styles.input} mt-2`}
@@ -178,8 +178,8 @@ const WithdrawMoney = () => {
                     </label>
                     <input
                       type="text"
-                      name=""
-                      id=""
+                      name="bankSwiftCode"
+                      id="bankSwiftCode"
                       required
                       value={bankInfo.bankSwiftCode}
                       onChange={(e) =>
@@ -200,8 +200,8 @@ const WithdrawMoney = () => {
                     </label>
                     <input
                       type="number"
-                      name=""
-                      id=""
+                      name="bankAccountNumber"
+                      id="bankAccountNumber"
                       value={bankInfo.bankAccountNumber}
                       onChange={(e) =>
                         setBankInfo({
@@ -220,7 +220,7 @@ const WithdrawMoney = () => {
                     </label>
                     <input
                       type="text"
-                      name=""
+                      name="bankHolderName"
                       required
                       value={bankInfo.bankHolderName}
                       onChange={(e) =>
@@ -229,7 +229,7 @@ const WithdrawMoney = () => {
                           bankHolderName: e.target.value,
                         })
                       }
-                      id=""
+                      id="bankHolderName"
                       placeholder="Enter your bank Holder name!"
                       className={`${styles.input} mt-2`}
                     />
@@ -241,9 +241,9 @@ const WithdrawMoney = () => {
                     </label>
                     <input
                       type="text"
-                      name=""
+                      name="bankAddress"
                       required
-                      id=""
+                      id="bankAddress"
                       value={bankInfo.bankAddress}
                       onChange={(e) =>
                         setBankInfo({

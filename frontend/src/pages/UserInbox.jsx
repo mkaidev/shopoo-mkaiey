@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/role-supports-aria-props */
-/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useRef, useState } from "react";
 import Header from "../components/Layout/Header";
@@ -364,6 +363,7 @@ const SellerInbox = ({
         {messages &&
           messages.map((item, index) => (
             <div
+              key={index}
               className={`flex w-full my-2 ${
                 item.sender === sellerId ? "justify-end" : "justify-start"
               }`}
@@ -380,6 +380,7 @@ const SellerInbox = ({
                 <img
                   src={`${item.images?.url}`}
                   className="w-[300px] h-[300px] object-cover rounded-[10px] ml-2 mb-2"
+                  alt=""
                 />
               )}
               {item.text !== "" && (

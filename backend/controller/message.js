@@ -2,8 +2,8 @@ const Messages = require("../model/messages");
 const ErrorHandler = require("../utils/ErrorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const express = require("express");
-const cloudinary = require("cloudinary");
 const router = express.Router();
+const cloudinary = require("cloudinary");
 
 // create new message
 router.post(

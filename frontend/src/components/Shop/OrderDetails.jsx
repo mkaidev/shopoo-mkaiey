@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/styles";
 import { BsFillBagFill } from "react-icons/bs";
@@ -10,7 +9,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const OrderDetails = () => {
-  const { orders, isLoading } = useSelector((state) => state.order);
+  const { orders } = useSelector((state) => state.order);
   const { seller } = useSelector((state) => state.seller);
   const dispatch = useDispatch();
   const [status, setStatus] = useState("");
@@ -93,7 +92,7 @@ const OrderDetails = () => {
       <br />
       {data &&
         data?.cart.map((item, index) => (
-          <div className="w-full flex items-start mb-5">
+          <div key={index} className="w-full flex items-start mb-5">
             <img
               src={`${item.images[0]?.url}`}
               alt=""

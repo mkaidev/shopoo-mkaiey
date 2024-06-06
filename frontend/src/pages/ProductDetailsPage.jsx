@@ -22,8 +22,7 @@ const ProductDetailsPage = () => {
       const data = allProducts && allProducts.find((i) => i._id === id);
       setData(data);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [allProducts, allEvents]);
+  }, [allProducts, allEvents, eventData, id]);
 
   return (
     <div>

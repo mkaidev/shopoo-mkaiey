@@ -36,6 +36,7 @@ const ProductDetails = ({ data }) => {
     } else {
       setClick(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, wishlist]);
 
   const incrementCount = () => {
@@ -121,12 +122,13 @@ const ProductDetails = ({ data }) => {
                 <img
                   src={`${data && data.images[select]?.url}`}
                   alt=""
-                  className="w-[80%]"
+                  className="w-[80%] mt-5"
                 />
                 <div className="w-full flex">
                   {data &&
                     data.images.map((i, index) => (
                       <div
+                        key={index}
                         className={`${
                           select === 0 ? "border" : "null"
                         } cursor-pointer`}
@@ -134,7 +136,7 @@ const ProductDetails = ({ data }) => {
                         <img
                           src={`${i?.url}`}
                           alt=""
-                          className="h-[200px] overflow-hidden mr-3 mt-3"
+                          className="h-[50px] w-[50px] justify-center overflow-hidden p-2"
                           onClick={() => setSelect(index)}
                         />
                       </div>
@@ -146,7 +148,7 @@ const ProductDetails = ({ data }) => {
                   ></div>
                 </div>
               </div>
-              <div className="w-full 800px:w-[50%] pt-5">
+              <div className="w-full 800px:w-[50%] pt-5 ml-1">
                 <h1 className={`${styles.productTitle}`}>{data.name}</h1>
                 <p>{data.description}</p>
                 <div className="flex pt-3">
@@ -311,7 +313,7 @@ const ProductDetailsInfo = ({
         <div className="w-full min-h-[40vh] flex flex-col items-center py-3 overflow-y-scroll">
           {data &&
             data.reviews.map((item, index) => (
-              <div className="w-full flex my-2">
+              <div key={index} className="w-full flex my-2">
                 <img
                   src={`${item.user.avatar?.url}`}
                   alt=""

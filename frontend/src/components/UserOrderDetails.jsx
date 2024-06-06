@@ -23,6 +23,7 @@ const UserOrderDetails = () => {
 
   useEffect(() => {
     dispatch(getAllOrdersOfUser(user._id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, user._id]);
 
   const data = orders && orders.find((item) => item._id === id);
@@ -88,7 +89,7 @@ const UserOrderDetails = () => {
       <br />
       <br />
       {data &&
-        data?.cart.map((item, index) => {
+        data?.cart.map((item) => {
           return (
             <div className="w-full flex items-start mb-5">
               <img

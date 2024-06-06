@@ -24,8 +24,7 @@ const ActivationPage = () => {
       };
       sendRequest();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [activation_token]);
 
   return (
     <div
