@@ -22,6 +22,15 @@ CLOUDINARY_API_KEY=
 CLOUDINARY_API_SECRET=
 ```
 
+If you want to learn how to create it please follow below tutorial👇: <br />
+➡ Tutorial Link 💚: [Multi-Vendor MERN Stack E-commerce project With All functionalities absolutely for beginners Part 1Multi-Vendor MERN Stack E-commerce project With All functionalities absolutely for beginners Part 1](https://www.youtube.com/watch?v=XxnUSZOgMLY&t=1002s)
+
+---
+
+# ⭐DO NOT FORGET TO STAR THIS REPO⭐
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
